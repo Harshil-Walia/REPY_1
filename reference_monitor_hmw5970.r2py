@@ -52,7 +52,7 @@ class ABFile():
     l = len(x)
     
     if self.readat(1, 0) == 'S' and self.readat(1, l-1) == 'E':
-      self.Afile = self.Bfile
+      pass
     else:
       self.write(x, 0)
     
