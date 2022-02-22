@@ -35,11 +35,15 @@ class ABFile():
   def writeat(self,data,offset):
 
     x = len(data)
-    if ((data[0] == 's' or data[0] == 'S') and (data[-1] == 'e' or data[-1] == 'E')):
-      # Write the requested data to the B file using the sandbox's writeat call
-      self.Bfile.writeat(data,offset)
-    elif ((data[0] == 's' and data[0] == 'S') or (data[-1] == 'e' and data[-1] == 'E')):
+    
+    if ((data[0] == 's' and data[0] == 'S') or (data[-1] == 'e' and data[-1] == 'E')):
       pass
+    else:
+      self.Bfile.writeat(data,offset)
+
+    # if ((data[0] == 's' or data[0] == 'S') and (data[-1] == 'e' or data[-1] == 'E')):
+    #   # Write the requested data to the B file using the sandbox's writeat call
+    #   self.Bfile.writeat(data,offset)
     
     
   
