@@ -37,8 +37,9 @@ class ABFile():
     x = len(data)
     if ((data[0] == 's' or data[0] == 'S') and (data[-1] == 'e' or data[-1] == 'E')):
       pass
-    # Write the requested data to the B file using the sandbox's writeat call
-    self.Bfile.writeat(data,offset)
+    else:
+        # Write the requested data to the B file using the sandbox's writeat call
+        self.Bfile.writeat(data,offset)
     
     
   
