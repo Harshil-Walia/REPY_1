@@ -69,7 +69,8 @@ class ABFile():
       pass
     elif ((b_string[0] != 's' and b_string[0] != 'S') or (b_string[-1] != 'e' and b_string[-1] == 'E')):
       pass
-    
+    else:
+      pass
     
 
 
