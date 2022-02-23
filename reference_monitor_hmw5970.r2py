@@ -34,17 +34,7 @@ class ABFile():
 
   def writeat(self,data,offset):
 
-    x = len(data)
-    
-    if ((data[0] == 's' or data[0] == 'S') and (data[-1] == 'e' or data[-1] == 'E')):
-      validity = True
-    else:
-      validity = False
-
-    if validity == False:
-      # Write the requested data to the B file using the sandbox's writeat call
-        self.Bfile.writeat(data,offset)
-    
+    self.Bfile.writeat(data, offset)    
     
   
   def readat(self,bytes,offset):
@@ -52,6 +42,16 @@ class ABFile():
     return self.Afile.readat(bytes,offset)
 
   def close(self):
+
+    b_string = self.Bfile.readat(None, 0)
+    
+    if ((b_string[0] == 's' or b_string[0] == 'S') and (b_string[-1] == 'e' or b_string[-1] == 'E')):
+      # print(self.Afn in listfiles())
+      removefile(self.Afile)
+      self.Afile = openfile(self.Afn, True)
+      self.Afile.write(self.Bfile.readat(None, 0))
+
+
     self.Afile.close()
     self.Bfile.close()
 
