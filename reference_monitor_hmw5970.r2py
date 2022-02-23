@@ -36,16 +36,19 @@ class ABFile():
 
   def writeat(self,data,offset):
     
-    data_copy = data.lower()
-    if (data_copy[0] != 's' or data_copy[-1] != 'e'):
-      pass
-    elif data_copy[0] == ' ':
-      pass
-    elif (data_copy[0] == 's' and data_copy[-1] == 'e'):
-      # Write the requested data to the B file using the sandbox's writeat call
+    # data_copy = data.lower()
+    # if (data_copy[0] == 's' and data_copy[-1] == 'e'):
+    #   pass
+    # elif data_copy[0] == ' ':
+    #   pass
+    # elif (data_copy[0] != 's' or data_copy[-1] != 'e'):
+    #   pass
+    # else:
+    #   # Write the requested data to the B file using the sandbox's writeat call
+    #   self.Bfile.writeat(data,offset)
+
+    # Write the requested data to the B file using the sandbox's writeat call
       self.Bfile.writeat(data,offset)
-    else:
-      pass
       
     
   
@@ -61,7 +64,7 @@ class ABFile():
     self.Bfile.close()
 
     if ((b_string[0] == 's' or b_string[0] == 'S') and (b_string[-1] == 'e' or b_string[-1] == 'E')):
-      # print(self.Afn in listfiles())
+      print(self.Afn in listfiles())
       removefile(self.Afn)
       self.Afile = openfile(self.Afn, True)
       self.Afile.writeat(b_string, 0)
