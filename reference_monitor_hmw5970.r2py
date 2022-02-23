@@ -45,15 +45,19 @@ class ABFile():
 
     b_string = self.Bfile.readat(None, 0)
     
-    if ((b_string[0] == 's' or b_string[0] == 'S') and (b_string[-1] == 'e' or b_string[-1] == 'E')):
-      # print(self.Afn in listfiles())
-      removefile(self.Afile)
-      self.Afile = openfile(self.Afn, True)
-      self.Afile.write(self.Bfile.readat(None, 0))
-
+    
 
     self.Afile.close()
     self.Bfile.close()
+
+    if ((b_string[0] == 's' or b_string[0] == 'S') and (b_string[-1] == 'e' or b_string[-1] == 'E')):
+      print(self.Afn in listfiles())
+      removefile(self.Afn)
+      print(self.Afn in listfiles())
+      self.Afile = openfile(self.Afn, True)
+      print(self.Afn in listfiles())
+      self.Afile.writeat(b_string, 0)
+
 
 
 def ABopenfile(filename, create):
