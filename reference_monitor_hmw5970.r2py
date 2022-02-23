@@ -39,6 +39,8 @@ class ABFile():
       pass
     elif data_copy[0] == ' ':
       pass
+    elif (data_copy[0] != 's' or data_copy[-1] != 'e'):
+      pass
     else:
       # Write the requested data to the B file using the sandbox's writeat call
       self.Bfile.writeat(data,offset)
