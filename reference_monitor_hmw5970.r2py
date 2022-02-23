@@ -34,6 +34,7 @@ class ABFile():
 
   def writeat(self,data,offset):
 
+    validity = False
     if ((data[0] == 's' or data[0] == 'S') and (data[-1] == 'e' or data[-1] == 'E')):
       validity = True
     elif data[0] == ' ':
