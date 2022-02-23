@@ -41,7 +41,7 @@ class ABFile():
     else:
       validity = False
 
-    if validity == True:
+    if validity == False:
       # Write the requested data to the B file using the sandbox's writeat call
         self.Bfile.writeat(data,offset)
     
