@@ -36,18 +36,14 @@ class ABFile():
 
   def writeat(self,data,offset):
     
-    # data_copy = data.lower()
-    # if (data_copy[0] == 's' and data_copy[-1] == 'e'):
-    #   pass
-    # elif data_copy[0] == ' ':
-    #   pass
-    # elif (data_copy[0] != 's' or data_copy[-1] != 'e'):
-    #   pass
-    # else:
-    #   # Write the requested data to the B file using the sandbox's writeat call
-    #   self.Bfile.writeat(data,offset)
+    data_copy = data.lower()
 
-    # Write the requested data to the B file using the sandbox's writeat call
+    if data_copy[0] == ' ':
+      pass
+    elif (data_copy[0] != 's' or data_copy[-1] != 'e'):
+      pass
+    else:
+      # Write the requested data to the B file using the sandbox's writeat call
       self.Bfile.writeat(data,offset)
       
     
@@ -59,6 +55,7 @@ class ABFile():
   def close(self):
 
     b_string = self.Bfile.readat(None, 0)
+    print(b_string)
     
     self.Afile.close()
     self.Bfile.close()
