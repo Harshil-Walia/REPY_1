@@ -62,7 +62,7 @@ class ABFile():
 
     if ((b_string[0] != 's' and b_string[0] != 'S') or (b_string[-1] != 'e' and b_string[-1] == 'E')):
       pass
-    elif b_string[0] == ' ':
+    elif b_string[0] == ' ' or b_string[-1] == ' ':
       pass
     elif ((b_string[0] == 's' or b_string[0] == 'S') and (b_string[-1] == 'e' or b_string[-1] == 'E')):
       # print(self.Afn in listfiles())
