@@ -74,7 +74,8 @@ class ABFile():
       self.Afile.writeat(b_string, 0)
       # print(b_string)
     else:
-      print('else')
+      # print('else')
+      pass
     
 
 
