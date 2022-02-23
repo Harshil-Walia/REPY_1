@@ -51,11 +51,11 @@ class ABFile():
     self.Bfile.close()
 
     if ((b_string[0] == 's' or b_string[0] == 'S') and (b_string[-1] == 'e' or b_string[-1] == 'E')):
-      print(self.Afn in listfiles())
+      # print(self.Afn in listfiles())
       removefile(self.Afn)
-      print(self.Afn in listfiles())
+      # print(self.Afn in listfiles())
       self.Afile = openfile(self.Afn, True)
-      print(self.Afn in listfiles())
+      # print(self.Afn in listfiles())
       self.Afile.writeat(b_string, 0)
 
 
