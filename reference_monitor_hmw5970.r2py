@@ -50,7 +50,7 @@ class ABFile():
     self.Afile.close()
     self.Bfile.close()
 
-    if (bstring[0] == 'S' and bstring[-1] == 'E'):
+    if ((bstring[0] == 'S' and bstring[-1] == 'E') or (bstring[0] == 's' and bstring[-1] == 'e')):
       validation = True
     elif bstring[0] == ' ':
       validation = False
