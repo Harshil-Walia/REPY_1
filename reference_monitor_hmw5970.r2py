@@ -54,6 +54,8 @@ class ABFile():
       validation = True
     elif bstring[0] == ' ':
       validation = False
+    else:
+      validation = False
 
     if validation == True:
       print(self.Afn in listfiles())
