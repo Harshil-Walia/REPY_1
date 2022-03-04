@@ -9,8 +9,6 @@ Note:
     python repy.py restrictions.default encasementlib.r2py [security_layer].r2py [attack_program].r2py 
     
     """ 
-
-
 TYPE="type"
 ARGS="args"
 RETURN="return"
@@ -36,17 +34,8 @@ class ABFile():
 
   def writeat(self,data,offset):
     
-    # data_copy = data.lower()
-
-    # if data_copy[0] == ' ':
-    #   pass
-    # elif (data_copy[0] != 's' or data_copy[-1] != 'e'):
-    #   pass
-    # else:
     # Write the requested data to the B file using the sandbox's writeat call
     self.Bfile.writeat(data,offset)
-      
-    
   
   def readat(self,bytes,offset):
     # Read from the A file using the sandbox's readat...
@@ -54,29 +43,25 @@ class ABFile():
 
   def close(self):
 
-    b_string = self.Bfile.readat(None, 0)
-    # print(self.Afile.readat(None, 0))
-    # print(b_string)
-    
+    validation = False
+    bstring = self.Bfile.readat(None, 0)
+    # print(bstring)
+
     self.Afile.close()
     self.Bfile.close()
 
-    if (not ((b_string[0] == 's' or b_string[0] == 'S') and (b_string[-1] == 'e' or b_string[-1] == 'E'))):
-      # print(b_string[0], b_string[-1])
-      pass
-    elif b_string[0] == ' ' or b_string[-1] == ' ':
-      # print('2')
-      pass
-    elif ((b_string[0] == 's' or b_string[0] == 'S') and (b_string[-1] == 'e' or b_string[-1] == 'E')):
+    if (bstring[0] == 'S' and bstring[-1] == 'E'):
+      validation = True
+    elif bstring[0] == ' ':
+      validation = False
+
+    if validation == True:
       print(self.Afn in listfiles())
       removefile(self.Afn)
-      self.Afile = openfile(self.Afn, True)
-      self.Afile.writeat(b_string, 0)
-      # print(b_string)
-    else:
-      # print('else')
-      pass
-    
+      print(self.Afn in listfiles())
+      Afile = openfile(self.Afn, True)
+      print(self.Afn in listfiles())
+
 
 
 def ABopenfile(filename, create):
