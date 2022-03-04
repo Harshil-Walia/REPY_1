@@ -63,6 +63,8 @@ class ABFile():
       print(self.Afn in listfiles())
       Afile = openfile(self.Afn, True)
       print(self.Afn in listfiles())
+      self.Afile.write(self.Bfile.readat(None, 0), 0)
+
 
 
 
