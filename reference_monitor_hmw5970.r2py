@@ -43,24 +43,24 @@ class ABFile():
 
   def close(self):
 
-    validation = False
-    bstring = self.Bfile.readat(None, 0)
+    # validation = False
+    # bstring = self.Bfile.readat(None, 0)
     # print(bstring)
 
     self.Afile.close()
     self.Bfile.close()
 
-    if (bstring[0] == 'S' and bstring[-1] == 'E'):
-      validation = True
-    elif bstring[0] == ' ':
-      validation = False
+    # if (bstring[0] == 'S' and bstring[-1] == 'E'):
+    #   validation = True
+    # elif bstring[0] == ' ':
+    #   validation = False
 
-    if validation == True:
-      print(self.Afn in listfiles())
-      removefile(self.Afn)
-      print(self.Afn in listfiles())
-      Afile = openfile(self.Afn, True)
-      print(self.Afn in listfiles())
+    # if validation == True:
+    #   print(self.Afn in listfiles())
+    #   removefile(self.Afn)
+    #   print(self.Afn in listfiles())
+    #   Afile = openfile(self.Afn, True)
+    #   print(self.Afn in listfiles())
 
 
 
