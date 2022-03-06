@@ -42,7 +42,7 @@ class ABFile():
         self.Afn = openfile(self.Afn)
         self.Afile.writeat('SE',0)
       else:
-        elf.Afn = openfile(self.Afn)
+        self.Afn = openfile(self.Afn)
         self.Afn = openfile(self.Afn)
 
 
