@@ -57,7 +57,7 @@ class ABFile():
       removefile(self.Afn)
       self.Afile = openfile(self.Afn, True)
       self.Afile.writeat(bstring, 0)
-      print(bstring)
+      #print(bstring)
       pass
     else:
       pass
