@@ -41,11 +41,11 @@ class ABFile():
     else:
 
       if self.Afn in listfiles():
+        pass
+      else:
         self.Afile = openfile(self.Afn,create)
         self.Bfile = openfile(self.Bfn,create)
         self.Afile.writeat('SE',0)
-      else:
-        pass
 
 
   def writeat(self,data,offset):
