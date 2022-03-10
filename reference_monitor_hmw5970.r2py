@@ -82,7 +82,7 @@ class ABFile():
 
     if len(bstring) == 0:
       pass
-    elif bstring[0].isspace():
+    elif bstring[0] == '':
       pass
     elif bstring[0] == 'S' and bstring[-1] == 'E':
       removefile(self.Afn)
