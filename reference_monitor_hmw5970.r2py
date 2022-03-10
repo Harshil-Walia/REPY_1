@@ -80,17 +80,17 @@ class ABFile():
     self.Afile.close()
     self.Bfile.close()
 
-    if len(bstring) == 0:
-      pass
-    elif bstring[0] == '':
-      pass
-    elif bstring[0] == 'S' and bstring[-1] == 'E':
-      removefile(self.Afn)
-      self.Afile = openfile(self.Afn, True)
-      self.Afile.writeat(bstring, 0)
-      # print(bstring)
-    else:
-      pass
+    if len(bstring) != 0:
+      
+      if bstring[0] == ' ':
+        pass
+      elif bstring[0] == 'S' and bstring[-1] == 'E':
+        removefile(self.Afn)
+        self.Afile = openfile(self.Afn, True)
+        self.Afile.writeat(bstring, 0)
+        # print(bstring)
+      else:
+        pass
 
 
 
