@@ -56,6 +56,8 @@ class ABFile():
         # print('offset 0')
         self.Bfile.writeat(data,offset)
       elif offset < 0:
+        # print(self.Bfile.writeat(data, offset))
+        # self.Bfile.writeat(data, offset)
         pass
       elif offset > len(bstring):
         # print(offset, len(bstring))
@@ -70,8 +72,19 @@ class ABFile():
     
   
   def readat(self,bytes,offset):
-    # Read from the A file using the sandbox's readat...
-    return self.Afile.readat(bytes,offset)
+
+    if self.Afn in listfiles():
+      
+      if offset < 0:
+        pass
+      elif offset > len(self.Afile.readat(None, 0)):
+        pass
+      else:
+        # Read from the A file using the sandbox's readat...
+        return self.Afile.readat(bytes,offset)
+        
+    else:
+      pass
 
   def close(self):
 
