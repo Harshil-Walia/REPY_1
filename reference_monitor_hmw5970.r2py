@@ -104,12 +104,12 @@ class ABFile():
     elif bstring[0] == ' ':
       pass
     elif bstring[0] == 'S' and bstring[-1] == 'E':
-      if self.Afn in listfiles():
-        removefile(self.Afn)
-        self.Afile = openfile(self.Afn, True)
-        self.Afile.writeat(bstring, 0)
-        self.Afile.close()
-        # print(bstring)
+      
+      removefile(self.Afn)
+      self.Afile = openfile(self.Afn, True)
+      self.Afile.writeat(bstring, 0)
+      self.Afile.close()
+      # print(bstring)
     else:
       pass
 
