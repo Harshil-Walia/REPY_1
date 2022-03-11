@@ -55,6 +55,8 @@ class ABFile():
       if offset == 0:
         # print('offset 0')
         self.Bfile.writeat(data,offset)
+      elif offset < 0:
+        pass
       elif offset > len(bstring):
         # print(offset, len(bstring))
         pass
