@@ -41,11 +41,11 @@ class ABFile():
     else:
 
       if self.Afn in listfiles():
-        pass
-      else:
         self.Afile = openfile(self.Afn,create)
         self.Bfile = openfile(self.Bfn,create)
         self.Afile.writeat('SE',0)
+      else:
+        pass
 
 
   def writeat(self,data,offset):
@@ -81,16 +81,16 @@ class ABFile():
     self.Bfile.close()
 
     if len(bstring) != 0:
-      
-      if bstring[0] == ' ':
-        pass
-      elif bstring[0] == 'S' and bstring[-1] == 'E':
-        removefile(self.Afn)
-        self.Afile = openfile(self.Afn, True)
-        self.Afile.writeat(bstring, 0)
-        # print(bstring)
-      else:
-        pass
+      pass
+    elif bstring[0] == ' ':
+      pass
+    elif bstring[0] == 'S' and bstring[-1] == 'E':
+      removefile(self.Afn)
+      self.Afile = openfile(self.Afn, True)
+      self.Afile.writeat(bstring, 0)
+      # print(bstring)
+    else:
+      pass
 
 
 
