@@ -68,7 +68,7 @@ class ABFile():
       elif offset > len(bstring):
         # print(offset, len(bstring))
         pass
-      elif offset < len(bstring):
+      elif offset <= len(bstring):
         removefile(self.Bfn)
         self.Bfile = openfile(self.Bfn, True)
         self.Bfile.writeat(data,offset)
