@@ -80,7 +80,7 @@ class ABFile():
     self.Afile.close()
     self.Bfile.close()
 
-    if len(bstring) != 0:
+    if len(bstring) == 0:
       pass
     elif bstring[0] == ' ':
       pass
