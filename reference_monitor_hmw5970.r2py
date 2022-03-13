@@ -38,6 +38,15 @@ class ABFile():
       else:
         self.Afile = openfile(self.Afn, create)
         self.Bfile = openfile(self.Bfn, create)
+      
+    else:
+      if not self.Afn in listfiles():
+        self.Afile = openfile(self.Afn, create)
+        self.Bfile = openfile(self.Bfn, create)
+        self.Afile.writeat('SE', 0)
+      else:
+        self.Afile = openfile(self.Afn, create)
+        self.Bfile = openfile(self.Bfn, create)
         
 
 
@@ -56,8 +65,8 @@ class ABFile():
       #   # self.Bfile = openfile(self.Bfn,create)
       #   self.Afile.writeat('SE',0)
 
-    else:
-      pass
+    # else:
+    #   pass
       # print(create)
       # if self.Afn in listfiles():
       #   pass
