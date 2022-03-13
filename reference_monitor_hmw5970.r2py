@@ -30,38 +30,40 @@ class ABFile():
     # make the files and add 'SE' to the readat file...
     
     if create:
-      self.Afile = openfile(self.Afn, create)
-      self.Bfile = openfile(self.Bfn, create)
-      self.Afile.writeat('SE', 0)
+      # self.Afile = openfile(self.Afn, create)
+      # self.Bfile = openfile(self.Bfn, create)
+      # self.Afile.writeat('SE', 0)
 
 
-    #   if self.Afn in listfiles():
-    #     pass
-    #   else:
-    #     self.Afile = openfile(self.Afn,create)
-    #     self.Bfile = openfile(self.Bfn,create)
-    #     self.Afile.writeat('SE',0)
+      if self.Afn in listfiles():
+        pass
+      else:
+        self.Afile = openfile(self.Afn,create)
+        self.Bfile = openfile(self.Bfn,create)
+        self.Afile.writeat('SE',0)
 
-    # else:
+    else:
 
-    #   if self.Afn in listfiles():
-    #     self.Afile = openfile(self.Afn,create)
-    #     self.Bfile = openfile(self.Bfn,create)
-    #     self.Afile.writeat('SE',0)
-    #   else:
-    #     pass
+      if self.Afn in listfiles():
+        pass
+      else:
+        self.Afile = openfile(self.Afn,create)
+        self.Bfile = openfile(self.Bfn,create)
+        self.Afile.writeat('SE',0)
 
 
   def writeat(self,data,offset):
 
     if self.Bfn in listfiles():
+      
       bstring = self.Bfile.readat(None, 0)
       # print(bstring)
       if offset == 0:
         # print('offset 0')
-        removefile(self.Bfn)
-        self.Bfile = openfile(self.Bfn, True)
+        # removefile(self.Bfn)
+        # self.Bfile = openfile(self.Bfn, True)
         self.Bfile.writeat(data,offset)
+        # print(data)
       elif offset < 0:
         # print(self.Bfile.writeat(data, offset))
         # self.Bfile.writeat(data, offset)
@@ -72,10 +74,11 @@ class ABFile():
         pass
         # print('high offset')
       elif offset <= len(bstring):
-        removefile(self.Bfn)
-        self.Bfile = openfile(self.Bfn, True)
+        # removefile(self.Bfn)
+        # self.Bfile = openfile(self.Bfn, True)
         # print('low offset')
         self.Bfile.writeat(data,offset)
+        # print(data, offset)
       # elif bstring[0] == ' ':
       #   pass
     else:
@@ -93,8 +96,7 @@ class ABFile():
         pass
       else:
         # Read from the A file using the sandbox's readat...
-        return self.Afile.readat(bytes,offset)
-        
+        return self.Afile.readat(bytes,offset)   
     else:
       pass
 
@@ -119,6 +121,7 @@ class ABFile():
       self.Afile.close()
       # print(bstring)
     else:
+      # print(bstring)
       pass
 
 
