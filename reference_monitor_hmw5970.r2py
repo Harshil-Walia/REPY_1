@@ -17,7 +17,7 @@ TARGET="target"
 FUNC="func"
 OBJC="objc"
 
-
+mycontext['lock'] = createlock()
 
 class ABFile():
   def __init__(self,filename,create):
@@ -28,6 +28,7 @@ class ABFile():
     self.Bfn = filename+'.b'
 
     # make the files and add 'SE' to the readat file...
+    mycontext['lock'].acquire(True)
     
     if create:
 
@@ -47,33 +48,6 @@ class ABFile():
       else:
         self.Afile = openfile(self.Afn, create)
         self.Bfile = openfile(self.Bfn, create)
-        
-
-
-      # print(self.Afn in listfiles(), self.Bfn in listfiles())
-      # self.Afile = openfile(self.Afn, create)
-      # self.Bfile = openfile(self.Bfn, create)
-      # print(self.Afn in listfiles(), self.Bfn in listfiles())
-      # self.Afile.writeat('SE', 0)
-      # print(self.Afile.readat(None, 0))
-      
-
-      # if self.Afn in listfiles():
-      #   pass
-      # else:
-      #   # self.Afile = openfile(self.Afn,create)
-      #   # self.Bfile = openfile(self.Bfn,create)
-      #   self.Afile.writeat('SE',0)
-
-    # else:
-    #   pass
-      # print(create)
-      # if self.Afn in listfiles():
-      #   pass
-      # else:
-      #   # self.Afile = openfile(self.Afn,create)
-      #   # self.Bfile = openfile(self.Bfn,create)
-      #   self.Afile.writeat('SE',0)
 
 
   def writeat(self,data,offset):
@@ -81,35 +55,17 @@ class ABFile():
     if self.Bfn in listfiles():
       
       bstring = self.Bfile.readat(None, 0)
-      # print(bstring)
       if offset == 0:
-        # print('offset 0')
-        # removefile(self.Bfn)
-        # self.Bfile = openfile(self.Bfn, True)
         self.Bfile.writeat(data,offset)
-        # print(data)
       elif offset < 0:
-        # print(self.Bfile.writeat(data, offset))
-        # self.Bfile.writeat(data, offset)
         pass
-        # print('offset negetive')
       elif offset > len(bstring):
-        # print(offset, len(bstring))
         pass
-        # print('high offset')
       elif offset <= len(bstring):
-        # removefile(self.Bfn)
-        # self.Bfile = openfile(self.Bfn, True)
-        # print('low offset')
         self.Bfile.writeat(data,offset)
-        # print(data, offset)
-      # elif bstring[0] == ' ':
-      #   pass
     else:
       pass
     
-    
-  
   def readat(self,bytes,offset):
 
     if self.Afn in listfiles():
@@ -126,27 +82,19 @@ class ABFile():
 
   def close(self):
 
-    bstring = self.Bfile.readat(None, 0)
-    # print(self.Bfn in listfiles())
-    
+    bstring = self.Bfile.readat(None, 0)    
 
     self.Afile.close()
     self.Bfile.close()
 
-    # if len(bstring) == 0:
-    #   pass
-    # elif bstring[0] == ' ':
-    #   pass
     if bstring[0] == 'S' and bstring[-1] == 'E':
-      
       removefile(self.Afn)
       self.Afile = openfile(self.Afn, True)
       self.Afile.writeat(bstring, 0)
       self.Afile.close()
-      # print(bstring)
     else:
-      # print(bstring)
       pass
+    mycontext['lock'].release()
 
 
 
