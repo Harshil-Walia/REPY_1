@@ -59,8 +59,8 @@ class ABFile():
       # print(bstring)
       if offset == 0:
         # print('offset 0')
-        # removefile(self.Bfn)
-        # self.Bfile = openfile(self.Bfn, True)
+        removefile(self.Bfn)
+        self.Bfile = openfile(self.Bfn, True)
         self.Bfile.writeat(data,offset)
       elif offset < 0:
         # print(self.Bfile.writeat(data, offset))
@@ -72,8 +72,8 @@ class ABFile():
         pass
         # print('high offset')
       elif offset <= len(bstring):
-        # removefile(self.Bfn)
-        # self.Bfile = openfile(self.Bfn, True)
+        removefile(self.Bfn)
+        self.Bfile = openfile(self.Bfn, True)
         # print('low offset')
         self.Bfile.writeat(data,offset)
       # elif bstring[0] == ' ':
