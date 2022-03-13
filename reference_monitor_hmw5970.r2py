@@ -56,6 +56,7 @@ class ABFile():
 
     if self.Bfn in listfiles():
       bstring = self.Bfile.readat(None, 0)
+      # print(bstring)
       if offset == 0:
         # print('offset 0')
         # removefile(self.Bfn)
@@ -65,12 +66,15 @@ class ABFile():
         # print(self.Bfile.writeat(data, offset))
         # self.Bfile.writeat(data, offset)
         pass
+        # print('offset negetive')
       elif offset > len(bstring):
         # print(offset, len(bstring))
         pass
+        # print('high offset')
       elif offset <= len(bstring):
         # removefile(self.Bfn)
         # self.Bfile = openfile(self.Bfn, True)
+        # print('low offset')
         self.Bfile.writeat(data,offset)
       # elif bstring[0] == ' ':
       #   pass
@@ -103,11 +107,11 @@ class ABFile():
     self.Afile.close()
     self.Bfile.close()
 
-    if len(bstring) == 0:
-      pass
-    elif bstring[0] == ' ':
-      pass
-    elif bstring[0] == 'S' and bstring[-1] == 'E':
+    # if len(bstring) == 0:
+    #   pass
+    # elif bstring[0] == ' ':
+    #   pass
+    if bstring[0] == 'S' and bstring[-1] == 'E':
       
       removefile(self.Afn)
       self.Afile = openfile(self.Afn, True)
