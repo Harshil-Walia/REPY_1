@@ -55,14 +55,19 @@ class ABFile():
     if self.Bfn in listfiles():
       
       bstring = self.Bfile.readat(None, 0)
+
       if offset == 0:
         self.Bfile.writeat(data,offset)
+
       elif offset < 0:
         pass
+
       elif offset > len(bstring):
         pass
+
       elif offset <= len(bstring):
         self.Bfile.writeat(data,offset)
+
     else:
       pass
     
@@ -72,11 +77,14 @@ class ABFile():
       
       if offset < 0:
         pass
+
       elif offset > len(self.Afile.readat(None, 0)):
         pass
+
       else:
         # Read from the A file using the sandbox's readat...
         return self.Afile.readat(bytes,offset)   
+
     else:
       pass
 
@@ -84,16 +92,21 @@ class ABFile():
 
     bstring = self.Bfile.readat(None, 0)    
 
-    self.Afile.close()
-    self.Bfile.close()
+    
 
     if bstring[0] == 'S' and bstring[-1] == 'E':
+      self.Afile.close()
       removefile(self.Afn)
       self.Afile = openfile(self.Afn, True)
       self.Afile.writeat(bstring, 0)
       self.Afile.close()
+
     else:
       pass
+
+    # self.Afile.close()
+    self.Bfile.close()
+
     mycontext['lock'].release()
 
 
